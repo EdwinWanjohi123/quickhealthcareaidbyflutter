@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:quickhealthcareaidappbyflutter/models/place.dart';
 import 'package:quickhealthcareaidappbyflutter/screens/search.dart';
@@ -17,9 +18,13 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
         providers:[
           FutureProvider(create: (context)=> locatorService.getLocation()),
-          ProxyProvider<Position,Future<List<Place>>>(
-            update:(context,position,places){
-              return (position != null) ? placesService.getPlaces(position.latitude,position.longitude ):null;
+          FutureProvider(create: (context){
+            ImageConfiguration configuration = createLocalImageConfiguration(context);
+            return BitmapDescriptor.fromAssetImage(configuration, 'asset/hospital.png');
+          }),
+          ProxyProvider2<Position,BitmapDescriptor,Future<List<Place>>>(
+            update:(context,position,icon,places){
+              return (position != null) ? placesService.getPlaces(position.latitude,position.longitude,icon):null;
             } ,)
         ],
          child: MaterialApp(

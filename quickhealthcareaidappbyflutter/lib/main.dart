@@ -9,32 +9,42 @@ import 'package:quickhealthcareaidappbyflutter/services/places_service.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
-  final locatorService = GeoLocatorService(); 
+class MyApp extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => MyAppState();
+}
+
+class MyAppState extends State {
+  final locatorService = GeoLocatorService();
   final placesService = PlacesService();
 
   @override
-  Widget build(BuildContext context) {  
+  Widget build(BuildContext context) {
     return MultiProvider(
-        providers:[
-          FutureProvider(create: (context)=> locatorService.getLocation()),
-          FutureProvider(create: (context){
-            ImageConfiguration configuration = createLocalImageConfiguration(context);
-            return BitmapDescriptor.fromAssetImage(configuration, 'asset/images/hospital.png');
-          }),
-          ProxyProvider2<Position,BitmapDescriptor,Future<List<Place>>>(
-            update:(context,position,icon,places){
-              return (position != null) ? placesService.getPlaces(position.latitude,position.longitude,icon):null;
-            } ,)
-        ],
-         child: MaterialApp(
+      providers: [
+        FutureProvider(create: (context) => locatorService.getLocation()),
+        FutureProvider(create: (context) {
+          ImageConfiguration configuration =
+              createLocalImageConfiguration(context);
+          return BitmapDescriptor.fromAssetImage(
+              configuration, 'assets/images/hospital.png');
+        }),
+        ProxyProvider2<Position, BitmapDescriptor, Future<List<Place>>>(
+          update: (context, position, icon, places) {
+            return (position != null)
+                ? placesService.getPlaces(
+                    position.latitude, position.longitude, icon)
+                : null;
+          },
+        )
+      ],
+      child: MaterialApp(
         title: 'Quick Health Care Aid App',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home:Search(),
+        home: Search(),
       ),
     );
   }
 }
-

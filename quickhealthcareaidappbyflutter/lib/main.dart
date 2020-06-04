@@ -1,49 +1,90 @@
+import 'dart:async';
+import 'home_page.dart';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:provider/provider.dart';
-import 'package:quickhealthcareaidappbyflutter/models/place.dart';
-import 'package:quickhealthcareaidappbyflutter/screens/search.dart';
-import 'package:quickhealthcareaidappbyflutter/services/geolocator_service.dart';
-import 'package:quickhealthcareaidappbyflutter/services/places_service.dart';
 
-void main() => runApp(MyApp());
-
-class MyApp extends StatefulWidget {
+void main() {
+  runApp(MaterialApp(
+    theme:
+      ThemeData(primaryColor: Colors.red, accentColor: Colors.yellowAccent),
+      debugShowCheckedModeBanner: false,
+      home: SplashScreen(), 
+    )
+  );
+}
+class SplashScreen extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => MyAppState();
+  _SplashScreenState createState() => _SplashScreenState();
 }
 
-class MyAppState extends State {
-  final locatorService = GeoLocatorService();
-  final placesService = PlacesService();
-
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState(){
+    super.initState();
+    Timer(Duration(seconds: 6),(){
+      Navigator.push(context, MaterialPageRoute(builder: (context) =>HomePage(), 
+        ),
+      );
+    });
+  }
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        FutureProvider(create: (context) => locatorService.getLocation()),
-        FutureProvider(create: (context) {
-          ImageConfiguration configuration =
-              createLocalImageConfiguration(context);
-          return BitmapDescriptor.fromAssetImage(
-              configuration, 'assets/images/hospital.png');
-        }),
-        ProxyProvider2<Position, BitmapDescriptor, Future<List<Place>>>(
-          update: (context, position, icon, places) {
-            return (position != null)
-                ? placesService.getPlaces(
-                    position.latitude, position.longitude, icon)
-                : null;
-          },
-        )
-      ],
-      child: MaterialApp(
-        title: 'Quick Health Care Aid App',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: Search(),
+    return Scaffold(
+      body: Stack(
+        fit:StackFit.expand,
+        children:<Widget>[
+          Container(
+            decoration: BoxDecoration(color: Colors.redAccent),
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children:<Widget>[
+              Expanded(
+                flex: 2,
+                child: Container(
+                  child:Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      CircleAvatar(
+                        backgroundColor: Colors.white,
+                        radius: 50.0,
+                        child: Icon(
+                          Icons.local_hospital,
+                          color: Colors.redAccent,
+                          size: 50.0,
+                        ),
+                        ),
+                        Padding(padding: EdgeInsets.only(top:10.0),
+                        ),
+                        Text(
+                          "Quick Health Care /n Aid App",
+                          style:TextStyle(
+                            color:Colors.white,
+                            fontSize:24,
+                            fontWeight: FontWeight.bold),
+                            )
+                    ],
+                  ),
+                ) ,
+                ),
+               Expanded(
+                 flex: 1,
+                 child: Column(
+                   mainAxisAlignment:MainAxisAlignment.center,
+                   children:<Widget>[
+                     CircularProgressIndicator(),
+                     Padding(padding: EdgeInsets.only(top: 20.0),
+                     ),
+                     Text("The Quickest Tracker to \n  your nearest hospital",style: TextStyle(
+                       color: Colors.white,
+                       fontSize: 18.0,
+                       fontWeight: FontWeight.bold)),
+                   ],
+                 )  ,
+               ) 
+            ],)
+        ]
       ),
     );
   }

@@ -9,6 +9,7 @@ class Place{
   final String vicinity;
   final Geometry geometry;
   final BitmapDescriptor icon;
+ 
 
   Place({this.geometry,this.name,this.rating,this.userRatingCount,this.emergencyHotLine,this.vicinity,this.icon});
 
@@ -20,5 +21,6 @@ class Place{
     vicinity = parsedJson['vicinity'],
     geometry = Geometry.fromJson(parsedJson['geometry']),
     icon=icon;
+  
 
 }

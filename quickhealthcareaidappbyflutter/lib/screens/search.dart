@@ -45,20 +45,7 @@ class Search extends StatelessWidget {
                         child: ListView.builder(
                             itemCount: places.length,
                             itemBuilder: (context, index) {
-                              return FutureProvider(
-                                create:(context) => geoService.getDistance(
-                                  currentPosition.latitude, 
-                                  currentPosition.longitude,
-                                  places[index].
-                                  geometry
-                                  .location
-                                  .lat,
-                                  places[index]
-                                  .geometry
-                                  .location
-                                  .lng),
-                                  child: Card(
-                                  child: ListTile(
+                              var listTile = ListTile(
                                     title: Text(places[index].name),
                                     subtitle: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -78,7 +65,7 @@ class Search extends StatelessWidget {
                                       Consumer<double>(
                                         builder: (context,meters,widget){
                                           return (meters != null)
-                                          ?Text('${places[index].vicinity}\u00b7 ${(meters/1609).round()} mi')
+                                          ?Text('${places[index].vicinity}\u00b7 ${(meters/1000).round()} km')
                                           :Container();
                                         },
                                       )
@@ -88,10 +75,23 @@ class Search extends StatelessWidget {
                                       icon: Icon(Icons.directions), 
                                       color: Theme.of(context).primaryColor,
                                       onPressed: () {
-                                        _launchMapsUrl(places[index].geometry.location.lat,places[index].geometry.location.lng);
+                                        _launchMapsUrl(places[index].geometry.location.lat,places[index].geometry.location.lng); 
                                       },
-                                      ),
-                                  ),
+                               ) );
+                              return FutureProvider(
+                                create:(context) => geoService.getDistance(
+                                  currentPosition.latitude, 
+                                  currentPosition.longitude,
+                                  places[index].
+                                  geometry
+                                  .location
+                                  .lat,
+                                  places[index]
+                                  .geometry
+                                  .location
+                                  .lng),
+                                  child: Card(
+                                  child: listTile,
                                 ),
                               );
                             }),
@@ -108,13 +108,14 @@ class Search extends StatelessWidget {
   }
 
 void _launchMapsUrl(double lat,double lng) async{
-  final url = 'https://www.google.com/maps/search/?api=query=$lat,$lng';
+  final url = 'https://www.google.com/maps/search/?api=1&query=$lat,$lng';
   if (await canLaunch(url)){
     await launch(url);
   }
   else{
     throw 'Could not launch $url';
   }
+
 }
 
 }

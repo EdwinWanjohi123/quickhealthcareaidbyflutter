@@ -93,14 +93,6 @@ class Search extends StatelessWidget {
                                           mainAxisSize: MainAxisSize.min,
                                           children: <Widget>[
                                             IconButton(
-                                              icon: Icon(
-                                                Icons.call,
-                                                color: Colors.blue,
-                                              ),
-                                              onPressed: () =>
-                                                  print('hello i am mohinder'),
-                                            ),
-                                            IconButton(
                                               icon: Icon(Icons.directions),
                                               color: Theme.of(context)
                                                   .primaryColor,
@@ -115,6 +107,14 @@ class Search extends StatelessWidget {
                                                         .location
                                                         .lng);
                                               },
+                                            ),
+                                            IconButton(
+                                              icon: Icon(
+                                                Icons.call,
+                                                color: Colors.blue,
+                                              ),
+                                              onPressed: () =>
+                                                  print('hello i am mohinder'),
                                             ),
                                           ],
                                         ));

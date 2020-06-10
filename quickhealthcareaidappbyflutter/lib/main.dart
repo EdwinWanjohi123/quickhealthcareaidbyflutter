@@ -70,7 +70,7 @@ class _SplashScreenState extends State<SplashScreen> {
                         padding: EdgeInsets.only(top: 10.0),
                       ),
                       Text(
-                        "Quick Health Care /n Aid App",
+                        "Quick Health Care Aid App",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 24,

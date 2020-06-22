@@ -16,7 +16,7 @@ class Search extends StatelessWidget {
     final placesProvider = Provider.of<Future<List<Place>>>(context);
     final geoService = GeoLocatorService();
     final markerService = MarkerService();
-    final hotlineNumber = '0700395395';
+    final hotLineNumber = '+254700395395';
 
     return FutureProvider(
       create: (context) => placesProvider,
@@ -115,7 +115,7 @@ class Search extends StatelessWidget {
                                                 color: Colors.blue,
                                               ),
                                               onPressed: () => launch(
-                                                  'tel://$hotlineNumber'),
+                                                  'tel://$hotLineNumber'),
                                             ),
                                           ],
                                         ));

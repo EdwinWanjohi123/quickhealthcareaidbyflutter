@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6229f29d-e0c0-4a55-81c8-3c27de72b0f1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/quickhealthcareaidappbyflutter/lib/services/geolocator_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/quickhealthcareaidappbyflutter/lib/services/geolocator_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quickhealthcareaidappbyflutter/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/quickhealthcareaidappbyflutter/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quickhealthcareaidappbyflutter/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/quickhealthcareaidappbyflutter/pubspec.yaml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1jlxOwCsP8zwjdT63D2ltKdeZtF" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/quickhealthcareaidappbyflutter" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6229f29d-e0c0-4a55-81c8-3c27de72b0f1" name="Default Changelist" comment="" />
+      <created>1604392451040</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1604392451040</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2660" y="295" key="FileChooserDialogImpl" timestamp="1604392888532">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2660" y="295" key="FileChooserDialogImpl/0.0.1920.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1604392888532" />
+    <state x="2360" y="114" key="SettingsEditor" timestamp="1604392875487">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2360" y="114" key="SettingsEditor/0.0.1920.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1604392875487" />
+  </component>
+</project>
